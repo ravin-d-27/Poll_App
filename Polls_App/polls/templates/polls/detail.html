@@ -1,0 +1,19 @@
+<form action = "{% url 'polls:vote' question.id %}" method='POST'>
+{% csrf_token %}    
+<fieldset>
+    <legend>
+<h1>{{question.question_text}}</h1>
+    </legend>
+
+    {% for choice in question.choice_set.all %}
+        <input type='radio' name='choice' id= 'choice{{forloop.counter}}'>
+        <label for='choice{{forloop.counter}}'>{{choice.choices}}</label>
+        <br>
+    {% endfor %}
+    <br>
+    <input type='submit' value='Vote!'>
+</fieldset>
+
+
+
+</form>

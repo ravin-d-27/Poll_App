@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
+from django.http import Http404, HttpResponse
 
 from django.template import loader
 # Create your views here.
@@ -12,10 +12,11 @@ def index(request):
     return render(request, 'polls/home.html', context)
 
 def detail(request, question_id):
-    return render(request, 'polls/detail.html')
-
-def results(request, question_id):
-    return render(request, 'polls/results.html')
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/detail.html', {'question':question})
 
 def vote(request, question_id):
     return render(request, 'polls/vote.html')
+
+def results(request, question_id):
+    return render(request, 'polls/results.html')
