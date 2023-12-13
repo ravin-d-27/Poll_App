@@ -1,19 +1,18 @@
-<form action = "{% url 'polls:vote' question.id %}" method='POST'>
-{% csrf_token %}    
-<fieldset>
-    <legend>
-<h1>{{question.question_text}}</h1>
-    </legend>
+<form action="{% url 'polls:vote' question.id %}" method="POST">
+    {% csrf_token %}
+    <fieldset>
+        <legend>
+            <h1>{{ question.question_text }}</h1>
+        </legend>
 
-    {% for choice in question.choice_set.all %}
-        <input type='radio' name='choice' id= 'choice{{forloop.counter}}'>
-        <label for='choice{{forloop.counter}}'>{{choice.choices}}</label>
+        {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <label for='choice{{forloop.counter}}'>{{choice.choices}}</label>
+            <br>
+        {% endfor %}
+        
         <br>
-    {% endfor %}
-    <br>
-    <input type='submit' value='Vote!'>
-</fieldset>
-
-
-
+        <input type="submit" value="Vote!">
+        <a href="{% url 'polls:results' question.id %}">View Results</a>
+    </fieldset>
 </form>
