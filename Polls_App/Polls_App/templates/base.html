@@ -82,7 +82,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">      
           <a class="navbar-brand" href="{% url 'home' %}">
-      
+            <img class='d-inline-block align-top' src="https://img1.pnghut.com/3/4/22/X60ecZvuSX/logo-text-trademark-ball-communication.jpg" height='35' width='35'/>
             VoteVerse
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@
             <div class='navbar-nav ms-auto px-2'>
               {% if user.is_authenticated %}
               <a class='nav-item nav-link'>User: {{user.username}}</a>
-              <a class='nav-item nav-link' href="/polls/">Vote Now!</a>
+              <a class='nav-item nav-link' href="/polls/">Vote</a>
               <a class='nav-item nav-link' href="JavaScript:{document.getElementById('logout').submit()}">Logout</a>
               <form id='logout' method='POST' action="{% url 'logout' %}">
                 {% csrf_token %}
