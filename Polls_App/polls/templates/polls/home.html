@@ -1,9 +1,38 @@
-You are in Polls App in HTML
+{% extends "base.html" %}
+
+{% block  content %}
 
 {% if latest_question_list %}
-<ul>
+<br>
+<div class='container'>
+    <br>
+    <h2><b>Select Your Question to Vote: </b></h2>
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-left card-body">
+    <div class="list-group">
+
     {% for question in latest_question_list %}
-    <li><a href="{% url 'polls:detail' question.id %}">{{question.question_text}}</a></li>
+
+    <a href="{% url 'polls:detail' question.id %}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+        <img src="https://img1.pnghut.com/3/4/22/X60ecZvuSX/logo-text-trademark-ball-communication.jpg" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+        <div class="d-flex gap-2 w-100 justify-content-between">
+          <div>
+            <h6 class="mb-0">{{question.question_text}}</h6>
+          </div>
+          <small class="opacity-50 text-nowrap">{{question.pub_text}}</small>
+        </div>
+      </a>
+
+
     {% endfor %}
-</ul>
+
+          
+    
+        </div>
+      </div>
+    </div>
+{% else %}
+There are no questions as of Now!
 {% endif %}
+
+
+{% endblock  %}
