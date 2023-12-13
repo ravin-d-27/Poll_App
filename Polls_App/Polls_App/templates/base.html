@@ -7,7 +7,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8113375651934696"
      crossorigin="anonymous"></script>
      
-    <title>Vote Verse</title>
+    <title>VoteVerse</title>
 
     <style>
       body {
@@ -83,14 +83,25 @@
       <div class="container-fluid">      
           <a class="navbar-brand" href="{% url 'home' %}">
       
-            Vote Verse
+            VoteVerse
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <div class='navbar-nav ms-auto px-2'>
-              <a class='nav-item nav-link' href="{% url 'polls' %}">Vote</a>
+              {% if user.is_authenticated %}
+              <a class='nav-item nav-link'>User: {{user.username}}</a>
+              <a class='nav-item nav-link' href="/polls/">Vote Now!</a>
+              <a class='nav-item nav-link' href="JavaScript:{document.getElementById('logout').submit()}">Logout</a>
+              <form id='logout' method='POST' action="{% url 'logout' %}">
+                {% csrf_token %}
+                <input type='hidden' />
+              </form>
+              {% else %}
+              <a class='nav-item nav-link' href="{% url 'signup' %}">Sign up</a>
+              <a class='nav-item nav-link' href="{% url 'login' %}">Log in</a>
+              {% endif %}
             </div>
           </div>
       </div>
