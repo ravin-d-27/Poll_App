@@ -2,6 +2,8 @@
 
 {% block  content %}
 
+{% if user.is_authenticated %}
+
 {% if latest_question_list %}
 <br>
 <div class='container'>
@@ -31,7 +33,28 @@
       </div>
     </div>
 {% else %}
-There are no questions as of Now!
+<br>
+<div class='container'>
+    <div class="alert alert-primary container" role="alert" align='center'>
+        <p>There are no questions as of now!</p>
+        <a href="{% url 'home' %}" class="btn btn-success">Go Home!</a>
+    </div>
+</div>
+{% endif %}
+
+{% else %}
+<br>
+<div class="p-5 mb-4 bg-body-tertiary rounded-3 container">
+  <div class='container'>
+    <div class='container'>
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Login to proceed further</h1>
+    <p class="col-md-8 fs-4">To cast your vote, please login!</p>
+    <a class="btn btn-primary btn-lg" type="button" href='{% url "login" %}'>Login Now!</a>
+  </div>
+</div>
+</div>
+</div>
 {% endif %}
 
 

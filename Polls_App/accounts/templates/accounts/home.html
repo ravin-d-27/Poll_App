@@ -2,7 +2,25 @@
 
 {% block content %}
 
+<div class='container'>
+    <br>
+    <br>
+    <br>
 
+<div class="p-5 mb-4 bg-body-tertiary rounded-3" align='center'>
+    <div class="container-fluid py-5">
+      <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://jacobsmedia.com/wp-content/uploads/2016/10/toastmasters-logo-1024x850.jpg">
+      <h1 class="display-5 fw-bold">Welcome to VoteVerse</h1>
+      <p class="col-md-8 fs-4">This website is to caste your vote against the best toastmaster for the given category according to your choice!</p>
+      {% if user.is_authenticated %}
+      <a class="btn btn-primary btn-lg" type="button" href='/polls/'>Vote Now!</a>
+      {% else %}
+      <a class="btn btn-primary btn-lg" type="button" href='{% url "login" %}'>Vote Now!</a>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
 
 {% endblock  %}
 

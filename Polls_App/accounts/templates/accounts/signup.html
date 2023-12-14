@@ -18,6 +18,7 @@
     {% endif %}
 
     <br>
+    {% if not user.is_authenticated %}
     <h3 class='text-center'>Sign up to VoteVerse</h1>
 <br>
     <div class="containers">
@@ -55,6 +56,17 @@
   <h6 align='center'>Already Registered? <a href='{% url "login" %}'>Log in!</a></h6>
 
 </div>
+{% else %}
+  
+  <br>
+  <div class='container'>
+      <div class="alert alert-primary container" role="alert" align='center'>
+          <p>You have already Signed In. Please Continue to Vote!</p>
+          <a href="{% url 'polls:index' %}" class="btn btn-success">Vote Now!</a>
+      </div>
+  </div>
+  
+  {% endif %}
 
 <script>
   function validateUsername() {
