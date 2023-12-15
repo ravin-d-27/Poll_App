@@ -8,6 +8,9 @@ from django.core.exceptions import ValidationError
 def home(request):
     return render(request, 'accounts/home.html')
 
+def credits(request):
+    return render(request, 'accounts/credits.html')
+
 # Create your views here.
 def signup(request):
     if request.method == 'POST':

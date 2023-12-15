@@ -25,6 +25,7 @@ urlpatterns = [
     path('login/', acviews.login, name='login'),
     path('signup/', acviews.signup, name='signup'),
     path('logout/', acviews.logout, name='logout'),
+    path('credits/', acviews.credits, name='credits'),
     
     path('polls/', include('polls.urls')),
 ]
