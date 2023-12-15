@@ -80,7 +80,17 @@ WSGI_APPLICATION = 'Polls_App.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(config('DATABASE'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config("DEV_DATABASE_NAME"),
+        'USER': config("DEV_DATABASE_USER"),
+        'PASSWORD': config("DEV_DATABASE_PASSWORD"),
+        'HOST': config("DEV_DATABASE_HOST"),
+        'PORT': config("DEV_DATABASE_PORT"),
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+    }
 }
 
 
